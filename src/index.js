@@ -8,6 +8,7 @@ import SiteMgmt from './pages/management/SiteMgmt'
 import SiteStatus from './pages/status/SiteStatus'
 import NotFound from './pages/NotFound'
 import Dashboard from './pages/Dashboard'
+import TestPage from './pages/TestPage'
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: '/sitestatus',
                 element: <SiteStatus />,
+            },
+            {
+                path: '/test',
+                element: <TestPage />,
             },
         ],
     },
