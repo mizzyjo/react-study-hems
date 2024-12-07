@@ -1,17 +1,17 @@
 {
-  "statusCode": "200",
-  "resultMsg": "성공",
-  "resultData": {
-    "recvPower": 3613.50,
-    "prevRecvPower": 3613.50,
-    "buildingMasterList": null,
-    "buildingInfoList": null,
-    "buildingList": null,
-    "buildingPrevList": null,
-    "buildingSeq": null,
-    "installedDate": null,
-    "buildingName": null,
-    "siteSeq": null,
-    "resourceType": null
-  }
+    "statusCode": "200",
+    "resultMsg": "성공",
+    "resultData": {
+        "recvPower": 3613.5,
+        "prevRecvPower": 3613.5,
+        "buildingMasterList": null,
+        "buildingInfoList": null,
+        "buildingList": null,
+        "buildingPrevList": null,
+        "buildingSeq": null,
+        "installedDate": null,
+        "buildingName": null,
+        "siteSeq": null,
+        "resourceType": null
+    }
 }
