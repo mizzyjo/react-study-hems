@@ -1,15 +1,46 @@
-import React from 'react'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
-import { Line } from 'react-chartjs-2'
+import React, { useEffect, useRef } from 'react'
+import {
+    Chart as ChartJS,
+    ArcElement,
+    Tooltip,
+    Legend,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    LineElement,
+    PointElement,
+} from 'chart.js'
+import { Doughnut, Line } from 'react-chartjs-2'
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+    ArcElement, 
+    Tooltip, 
+    Legend, 
+    CategoryScale, 
+    LinearScale, 
+    BarElement, 
+    LineElement, 
+    PointElement
+)
 
 export default function TestLineChart() {
+    const chartRef = useRef(null) 
+
+    useEffect(() => {
+        const chart = chartRef.current
+
+        
+        return () => {
+            if (chart && chart.chartInstance) {
+                chart.chartInstance.destroy()
+            }
+        }
+    }, [])
+
     return (
         <div>
-            {/* <Line data={lineData} /> */}
-            <Doughnut data={doughnutData} />
+            <Line ref={chartRef} data={lineData} /> 
+            {/* <Doughnut ref={chartRef} data={doughnutData} />  */}
         </div>
     )
 }
@@ -48,13 +79,13 @@ const doughnutData = {
       'Yellow'
     ],
     datasets: [{
-      label: 'My First Dataset',
-      data: [300, 50, 100],
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      hoverOffset: 4
+        label: 'My First Dataset',
+        data: [300, 50, 100],
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4,
     }]
-  };
+}
