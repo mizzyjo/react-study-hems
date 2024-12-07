@@ -16,6 +16,7 @@ export default class Hems {
             .buildingStats()
             .then(res => {
                 console.log('res.data', res.data)
+                return res.data
             })
     }
 
@@ -24,6 +25,7 @@ export default class Hems {
             .consumeRecvPower()
             .then(res => {
                 console.log('res.data2', res.data)
+                return res.data
             })
     }
 
