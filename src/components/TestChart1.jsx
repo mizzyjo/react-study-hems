@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 // Chart.js에서 사용할 컨트롤러들을 등록
 Chart.register(...registerables)
 
-export default function TestChart() {
+export default function TestChart1() {
     const chartRef = useRef(null)
 
     useEffect(() => {
