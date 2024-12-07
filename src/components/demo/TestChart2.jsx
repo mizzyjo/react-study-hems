@@ -12,6 +12,7 @@ import {
 } from 'chart.js'
 import { Doughnut, Line } from 'react-chartjs-2'
 
+// TODO: 이거 뭔지 알아보기
 ChartJS.register(
     ArcElement, 
     Tooltip, 
@@ -29,7 +30,6 @@ export default function TestLineChart() {
     useEffect(() => {
         const chart = chartRef.current
 
-        
         return () => {
             if (chart && chart.chartInstance) {
                 chart.chartInstance.destroy()
