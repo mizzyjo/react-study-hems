@@ -8,4 +8,8 @@ export default class FakeHemsClient {
     async buildingStats() {
         return axios.get('/data/getBuildingStats.json')
     }
+
+    async consumeRecvPower() {
+        return axios.get('/data/getConsumeRecvPower.json')
+    }
 }

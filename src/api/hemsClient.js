@@ -14,4 +14,9 @@ export default class HemsClient {
     async buildingStats(params) {
         return this.httpClient.get('/stats/buildingStats', params)
     }
+
+    async consumeRecvPower() {
+        // TODO: api 주소 매핑시키기
+        return this.httpClient.get('/...', params)
+    }
 }

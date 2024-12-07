@@ -6,12 +6,24 @@ export default class Hems {
     async buildingStats() {
         return this.#getBuildingStats()
     }
+    
+    async consumeRecvPower() {
+        return this.#getConsumeRecvPower()
+    }
 
     async #getBuildingStats(payload) {
         return this.apiClient
             .buildingStats()
             .then(res => {
                 console.log('res.data', res.data)
+            })
+    }
+
+    async #getConsumeRecvPower() {
+        return this.apiClient
+            .consumeRecvPower()
+            .then(res => {
+                console.log('res.data2', res.data)
             })
     }
 

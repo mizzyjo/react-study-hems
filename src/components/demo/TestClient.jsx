@@ -7,7 +7,7 @@ export default function TestClient() {
     // const client = new HemsClient()
     const client = new FakeHemsClient()
     const hems = new Hems(client)
-    console.log('hems!', hems.buildingStats())
+    console.log('hems!', hems.buildingStats(), hems.consumeRecvPower())
     return (
         <div>
             <p>hi</p>
