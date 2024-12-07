@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { LNB } from './components/common/LNB'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router'
+import { HemsApiProvider } from './context/HemsApiContext'
+
 function App() {
     let navigate = useNavigate()
     const { pathname } = useLocation()
@@ -14,8 +16,10 @@ function App() {
 
     return (
         <>
-            <LNB />
-            <Outlet />
+            <HemsApiProvider>
+                <LNB />
+                <Outlet />
+            </HemsApiProvider>
         </>
     )
 }
