@@ -1,13 +1,40 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import SiteMgmt from './pages/management/SiteMgmt'
+import SiteStatus from './pages/status/SiteStatus'
+import NotFound from './pages/NotFound'
+import Dashboard from './pages/Dashboard'
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <App />,
+        errorElement: <NotFound />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard />,
+            },
+            {
+                path: '/sitemgmt',
+                element: <SiteMgmt />,
+            },
+            {
+                path: '/sitestatus',
+                element: <SiteStatus />,
+            },
+        ],
+    },
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <React.StrictMode>
-        <App />
+        <RouterProvider router={router} />
     </React.StrictMode>,
 )
 

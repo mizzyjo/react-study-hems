@@ -1,13 +1,18 @@
-import TestClient from './components/demo/TestClient'
-import TestChart1 from './components/demo/TestChart1'
-import TestChart2 from './components/demo/TestChart2'
-
+import { useEffect } from 'react'
+import { LNB } from './components/common/LNB'
+import { Outlet } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 function App() {
+    let navigate = useNavigate()
+
+    useEffect(() => {
+        navigate('/dashboard')
+    }, [])
+    
     return (
         <>
-            <TestClient />
-            <TestChart1 />
-            <TestChart2 />
+            <LNB />
+            <Outlet />
         </>
     )
 }
