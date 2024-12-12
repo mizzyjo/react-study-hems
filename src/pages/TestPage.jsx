@@ -5,6 +5,7 @@ import { useHemsApi } from '../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import LineChart from '../components/common/LineChart'
 import { produce } from 'immer'
+import PowerCard from '../components/common/PowerCard'
 
 export default function TestPage() {
     const { hems } = useHemsApi()
@@ -18,6 +19,15 @@ export default function TestPage() {
         queryFn: () => hems.buildingStats(),
         staleTime: 1000 * 60 * 1,
     })
+
+    const [recvPower, setRecvPower] = useState(0)
+
+    useEffect(() => {
+        if(!isBuildingStatsLoading) {
+            setRecvPower(buildingStatsData.resultData.recvPower)
+        }
+
+    }, [isBuildingStatsLoading])
 
     const {
         isLoading: isConsumePowerLoading,
@@ -51,6 +61,7 @@ export default function TestPage() {
     return (
         <div>
             <h1>Test Page</h1>
+            <PowerCard title={'누적 소비 전력량'} kwValue={recvPower} />
             <LineChart chartName={'소비전력량 그래프 (kWh)'} data={chartData} />
             {/* <TestChart2/> */}
             {/* <TestClient /> */}
