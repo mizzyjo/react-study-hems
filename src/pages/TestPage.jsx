@@ -87,8 +87,8 @@ export default function TestPage() {
         error: buildingListError,
         data: buildingListData,
     } = useQuery({
-        queryKey: ['buildingList'],
-        queryFn: () => hems.buildingList(),
+        queryKey: ['buildingStatusList'],
+        queryFn: () => hems.buildingStatusList(),
         staleTime: 1000 * 60 * 1,
     })
 

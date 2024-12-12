@@ -11,6 +11,7 @@ export default class HemsClient {
         })
     }
 
+    /* 현황 페이지 APIs... */
     async buildingTotalInfo(params) {
         const tmpParam = {
             buildingSeq: '',
@@ -53,7 +54,7 @@ export default class HemsClient {
         return this.httpClient.post('/api/buildingStats/getConsumeRecvPower', tmpParam)
     }
 
-    async buildingList(params) {
+    async buildingStatusList(params) {
         const tmpParam = {
             buildingName: '',
             buildingSeq: '',

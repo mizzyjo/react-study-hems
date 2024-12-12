@@ -5,6 +5,7 @@ export default class FakeHemsClient {
 
     }
 
+    /* 현황 페이지 APIs... */
     async buildingTotalInfo() {
         return axios.get('/data/status/getBuildingTotalInfo.json')
     }
@@ -17,7 +18,10 @@ export default class FakeHemsClient {
         return axios.get('/data/status/getConsumeRecvPower.json')
     }
 
-    async buildingList() {
+    async buildingStatusList() {
         return axios.get('/data/status/getBuildingList.json')
     }
+
+    /* 관리 페이지 APIs... */
+
 }

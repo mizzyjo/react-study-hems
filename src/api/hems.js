@@ -15,8 +15,8 @@ export default class Hems {
         return this.#getConsumeRecvPower()
     }
 
-    async buildingList() {
-        return this.#getBuildingList()
+    async buildingStatusList() {
+        return this.#getBuildingStatusList()
     }
 
     async #getBuildingTotlaInfo() {
@@ -46,9 +46,9 @@ export default class Hems {
             })
     }
 
-    async #getBuildingList() {
+    async #getBuildingStatusList() {
         return this.apiClient
-            .buildingList()
+            .buildingStatusList()
             .then(res => {
                 console.log('res.data3', res.data)
                 return res.data
