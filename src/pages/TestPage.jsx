@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import LineChart from '../components/common/LineChart'
 import { produce } from 'immer'
 import PowerCard from '../components/common/PowerCard'
-import { BuildintStatusTable } from '../components/BuildingStatusTable'
+import { BuildintStatusTable } from '../components/status/BuildingStatusTable'
 
 export default function TestPage() {
     const { hems } = useHemsApi()
@@ -103,7 +103,7 @@ export default function TestPage() {
     return (
         <div>
             <h1>Test Page</h1>
-            <BuildintStatusTable rowNmdata={rowNmdata} data={buildingList}/>
+            <BuildintStatusTable columnHeaders={rowNmdata} buildingData={buildingList}/>
             <PowerCard title={'순간 최고 소비 전력'} kwValue={buildingInfo[0].recvPower + 'kw'} />
             <PowerCard title={'일 최고 소비 전력량'} kwValue={buildingInfo[1].recvPower + 'kw'} />
             <PowerCard title={'월 최고 소비 전력량'} kwValue={buildingInfo[2].recvPower + 'kw'} />
