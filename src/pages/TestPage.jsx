@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import LineChart from '../components/common/LineChart'
 import { produce } from 'immer'
 import PowerCard from '../components/common/PowerCard'
+import { BuildintStatusTable } from '../components/BuildingStatusTable'
 
 export default function TestPage() {
     const { hems } = useHemsApi()
@@ -80,9 +81,29 @@ export default function TestPage() {
         }
     }, [isConsumePowerLoading])
 
+    // 빌딩 리스트
+    const {
+        isLoading: isBuildingListLoading,
+        error: buildingListError,
+        data: buildingListData,
+    } = useQuery({
+        queryKey: ['buildingList'],
+        queryFn: () => hems.buildingList(),
+        staleTime: 1000 * 60 * 1,
+    })
+
+    const [buildingList, setBuildingList] = useState(initialBuildingList)
+
+    useEffect(() => {
+        if(!isBuildingListLoading) {
+            setBuildingList(buildingListData.list)
+        }
+    }, [isBuildingListLoading])
+
     return (
         <div>
             <h1>Test Page</h1>
+            <BuildintStatusTable rowNmdata={rowNmdata} data={buildingList}/>
             <PowerCard title={'순간 최고 소비 전력'} kwValue={buildingInfo[0].recvPower + 'kw'} />
             <PowerCard title={'일 최고 소비 전력량'} kwValue={buildingInfo[1].recvPower + 'kw'} />
             <PowerCard title={'월 최고 소비 전력량'} kwValue={buildingInfo[2].recvPower + 'kw'} />
@@ -135,3 +156,30 @@ const initialChartData = {
         },
     ]
 }
+
+const rowNmdata = [
+    '건물명',
+    '사이트',
+    '소비전력',
+    '(일)최대부하(kW)',
+    '최근 13개월 최대부하 (kW)',
+]
+
+const initialBuildingList = [
+    {
+        buildingId: 'S0001BLD01',
+        buildingName: '테스트건물',
+        buildingSeq: '1',
+        nowRecvPower: 0,
+        page: 1,
+        pageSize: 5,
+        pagination: null,
+        prevRecvPower: 12,
+        recordSize: 10,
+        recvPower: 0,
+        siteId: 'S0001',
+        siteName: '케이스마텍사이트',
+        siteSeq: '1',
+        siteType: null,
+    },
+]
