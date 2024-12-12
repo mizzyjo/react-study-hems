@@ -6,18 +6,18 @@ export default class FakeHemsClient {
     }
 
     async buildingTotalInfo() {
-        return axios.get('/data/getBuildingTotalInfo.json')
+        return axios.get('/data/status/getBuildingTotalInfo.json')
     }
 
     async buildingStats() {
-        return axios.get('/data/getBuildingStats.json')
+        return axios.get('/data/status/getBuildingStats.json')
     }
 
     async consumeRecvPower() {
-        return axios.get('/data/getConsumeRecvPower.json')
+        return axios.get('/data/status/getConsumeRecvPower.json')
     }
 
     async buildingList() {
-        return axios.get('/data/getBuildingList.json')
+        return axios.get('/data/status/getBuildingList.json')
     }
 }

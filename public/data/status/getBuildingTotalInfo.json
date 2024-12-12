@@ -1,0 +1,91 @@
+{
+    "statusCode": "200",
+    "resultMsg": "성공",
+    "resultData": {
+        "recvPower": null,
+        "prevRecvPower": null,
+        "buildingMasterList": [
+            {
+                "buildingSeq": "1",
+                "buildingId": "S0001BLD01",
+                "buildingName": "테스트건물",
+                "siteSeq": null,
+                "siteId": null,
+                "flagDate": null,
+                "resourceType": null,
+                "recvPower": null,
+                "time": null,
+                "installedDate": "2024-08-07"
+            },
+            {
+                "buildingSeq": "7",
+                "buildingId": "S0011BLD01",
+                "buildingName": "케이스마텍 건물1",
+                "siteSeq": null,
+                "siteId": null,
+                "flagDate": null,
+                "resourceType": null,
+                "recvPower": null,
+                "time": null,
+                "installedDate": "2024-09-20"
+            }
+        ],
+        "buildingInfoList": [
+            {
+                "buildingSeq": "1",
+                "buildingId": null,
+                "buildingName": null,
+                "siteSeq": "1",
+                "siteId": null,
+                "flagDate": "now",
+                "resourceType": null,
+                "recvPower": 12.0,
+                "time": "2024-08-16 22:14:21",
+                "installedDate": null
+            },
+            {
+                "buildingSeq": "7",
+                "buildingId": null,
+                "buildingName": null,
+                "siteSeq": "15",
+                "siteId": null,
+                "flagDate": "day",
+                "resourceType": null,
+                "recvPower": 48500.0,
+                "time": "2024-10-31",
+                "installedDate": null
+            },
+            {
+                "buildingSeq": "7",
+                "buildingId": null,
+                "buildingName": null,
+                "siteSeq": "15",
+                "siteId": null,
+                "flagDate": "month",
+                "resourceType": null,
+                "recvPower": 48511.0,
+                "time": "2024-10",
+                "installedDate": null
+            },
+            {
+                "buildingSeq": "7",
+                "buildingId": null,
+                "buildingName": null,
+                "siteSeq": "15",
+                "siteId": null,
+                "flagDate": "year",
+                "resourceType": null,
+                "recvPower": 48511.0,
+                "time": "2024",
+                "installedDate": null
+            }
+        ],
+        "buildingList": null,
+        "buildingPrevList": null,
+        "buildingSeq": null,
+        "installedDate": "2024-01-01",
+        "buildingName": null,
+        "siteSeq": null,
+        "resourceType": null
+    }
+}
