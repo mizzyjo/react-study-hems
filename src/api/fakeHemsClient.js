@@ -5,6 +5,10 @@ export default class FakeHemsClient {
 
     }
 
+    async buildingTotalInfo() {
+        return axios.get('/data/getBuildingTotalInfo.json')
+    }
+
     async buildingStats() {
         return axios.get('/data/getBuildingStats.json')
     }
