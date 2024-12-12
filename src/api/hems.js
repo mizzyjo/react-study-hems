@@ -15,6 +15,10 @@ export default class Hems {
         return this.#getConsumeRecvPower()
     }
 
+    async buildingList() {
+        return this.#getBuildingList()
+    }
+
     async #getBuildingTotlaInfo() {
         return this.apiClient
             .buildingTotalInfo()
@@ -38,6 +42,15 @@ export default class Hems {
             .consumeRecvPower()
             .then(res => {
                 console.log('res.data2', res.data)
+                return res.data
+            })
+    }
+
+    async #getBuildingList() {
+        return this.apiClient
+            .buildingList()
+            .then(res => {
+                console.log('res.data3', res.data)
                 return res.data
             })
     }

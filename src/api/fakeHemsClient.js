@@ -16,4 +16,8 @@ export default class FakeHemsClient {
     async consumeRecvPower() {
         return axios.get('/data/getConsumeRecvPower.json')
     }
+
+    async buildingList() {
+        return axios.get('/data/getBuildingList.json')
+    }
 }

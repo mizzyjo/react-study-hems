@@ -52,4 +52,16 @@ export default class HemsClient {
         }
         return this.httpClient.post('/api/buildingStats/getConsumeRecvPower', tmpParam)
     }
+
+    async buildingList(params) {
+        const tmpParam = {
+            buildingName: '',
+            buildingSeq: '',
+            page: 1,
+            resourceType: 'R',
+            siteName: '',
+            siteSeq: '',
+        }
+        return this.httpClient.post('/api/buildingStats/getBuildingList', tmpParam)
+    }
 }

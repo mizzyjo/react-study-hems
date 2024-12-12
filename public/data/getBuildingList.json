@@ -1,0 +1,61 @@
+{
+    "list": [
+        {
+            "page": 1,
+            "recordSize": 10,
+            "pageSize": 5,
+            "buildingSeq": "1",
+            "buildingId": "S0001BLD01",
+            "buildingName": "테스트건물",
+            "siteSeq": "1",
+            "siteId": "S0001",
+            "siteName": "케이스마텍사이트",
+            "siteType": null,
+            "nowRecvPower": 0.0,
+            "prevRecvPower": 12.0,
+            "recvPower": 0.0,
+            "pagination": null
+        },
+        {
+            "page": 1,
+            "recordSize": 10,
+            "pageSize": 5,
+            "buildingSeq": "7",
+            "buildingId": "S0011BLD01",
+            "buildingName": "케이스마텍 건물1",
+            "siteSeq": "15",
+            "siteId": "S0011",
+            "siteName": "케이스마텍 테스트사이트",
+            "siteType": null,
+            "nowRecvPower": 0.0,
+            "prevRecvPower": 11.0,
+            "recvPower": 0.0,
+            "pagination": null
+        },
+        {
+            "page": 1,
+            "recordSize": 10,
+            "pageSize": 5,
+            "buildingSeq": "19",
+            "buildingId": "S0011BLD02",
+            "buildingName": "test1210",
+            "siteSeq": "15",
+            "siteId": "S0011",
+            "siteName": "케이스마텍 테스트사이트",
+            "siteType": null,
+            "nowRecvPower": 0.0,
+            "prevRecvPower": 0.0,
+            "recvPower": 0.0,
+            "pagination": null
+        }
+    ],
+    "pagination": {
+        "totalRecordCount": 7,
+        "totalPageCount": 1,
+        "startPage": 1,
+        "endPage": 1,
+        "limitStart": 0,
+        "existPrevPage": false,
+        "existNextPage": false
+    }
+}
