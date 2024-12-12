@@ -10,6 +10,26 @@ import PowerCard from '../components/common/PowerCard'
 export default function TestPage() {
     const { hems } = useHemsApi()
 
+    // 최고 소비 전력 기록(빌딩 관련 모든 정보)
+    const {
+        isLoading: isBuildingTotalDataLoading,
+        error: buildingTotalDataError,
+        data: buildingTotalData,
+    } = useQuery({
+        queryKey: ['buildingTotalInfo'],
+        queryFn: () => hems.buildingTotalInfo(),
+        staleTime: 1000 * 60 * 1,
+    })
+
+    const [buildingInfo, setBuildingInfo] = useState(initialBuildingInfo)
+
+    useEffect(() => {
+        if(!isBuildingTotalDataLoading) {
+            setBuildingInfo(buildingTotalData.resultData.buildingInfoList)
+        }
+    }, [isBuildingTotalDataLoading])
+
+    // 누적 소비 전력량
     const {
         isLoading: isBuildingStatsLoading, 
         error: buildingStatsError, 
@@ -29,6 +49,7 @@ export default function TestPage() {
 
     }, [isBuildingStatsLoading])
 
+    // 소비 전력량 그래프
     const {
         isLoading: isConsumePowerLoading,
         error: consumePowerError,
@@ -39,8 +60,9 @@ export default function TestPage() {
         staleTime: 1000 * 60 * 1,
     })
 
-    console.log('tanstack 1: ', buildingStatsError, isBuildingStatsLoading, buildingStatsData)
+    console.log('tanstack 0: ', buildingTotalDataError, isBuildingTotalDataLoading, buildingTotalData)
     console.log('tanstack 2: ', consumePowerError, isConsumePowerLoading, consumePowerData)
+    console.log('tanstack 1: ', buildingStatsError, isBuildingStatsLoading, buildingStatsData)
 
     const [chartData, setChartData] = useState(initialChartData)
 
@@ -61,13 +83,36 @@ export default function TestPage() {
     return (
         <div>
             <h1>Test Page</h1>
-            <PowerCard title={'누적 소비 전력량'} kwValue={recvPower} />
+            <PowerCard title={'순간 최고 소비 전력'} kwValue={buildingInfo[0].recvPower + 'kw'} />
+            <PowerCard title={'일 최고 소비 전력량'} kwValue={buildingInfo[1].recvPower + 'kw'} />
+            <PowerCard title={'월 최고 소비 전력량'} kwValue={buildingInfo[2].recvPower + 'kw'} />
+            <PowerCard title={'년 최고 소비 전력량'} kwValue={buildingInfo[3].recvPower + 'kw'} />
+            <PowerCard title={'누적 소비 전력량'} kwValue={recvPower + 'kw'} />
             <LineChart chartName={'소비전력량 그래프 (kWh)'} data={chartData} />
             {/* <TestChart2/> */}
             {/* <TestClient /> */}
         </div>
     )
 }
+
+const initialBuildingInfo = [
+    {
+        flagDate: 'now',
+        recvPower: 0,
+    },
+    {
+        flagDate: 'day',
+        recvPower: 0,
+    },
+    {
+        flagDate: 'month',
+        recvPower: 0,
+    },
+    {
+        flagDate: 'year',
+        recvPower: 0,
+    },
+]
 
 const initialChartData = {
     labels: Array.from({ length: 24 }, (_, i) => String(i)),
