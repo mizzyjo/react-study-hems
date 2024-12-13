@@ -131,4 +131,15 @@ export default class HemsClient {
         }
         return this.httpClient.post('/api/buildingStats/getBuildingList', tmpParam)
     }
+
+    /** 
+        전기 요금제 관리 APIs 
+    */
+    async epChartData(params) {
+        const tmpParam = {
+            dateType: 'day',
+            epSeq: '2',
+        }
+        return this.httpClient.post('/api/eprice/epChartData', tmpParam)
+    }
 }

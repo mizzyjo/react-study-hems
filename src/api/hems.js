@@ -39,6 +39,10 @@ export default class Hems {
         return this.#getBuildingStatusList()
     }
 
+    async epChartData() {
+        return this.#getEpChartData()
+    }
+
     async #getEssData() {
         return this.apiClient
             .essData()
@@ -116,6 +120,15 @@ export default class Hems {
             .buildingStatusList()
             .then(res => {
                 console.log('res.data3', res.data)
+                return res.data
+            })
+    }
+
+    async #getEpChartData() {
+        return this.apiClient
+            .epChartData()
+            .then(res => {
+                console.log('res.data epChartData', res.data)
                 return res.data
             })
     }

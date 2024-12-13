@@ -46,4 +46,9 @@ export default class FakeHemsClient {
 
     /* 관리 페이지 APIs... */
 
+    /* 전기 요금제 관리 페이지 APIs... */
+    async epChartData() {
+        return axios.get('/data/eprice/epChartData.json')
+    }
+
 }
