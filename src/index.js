@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard'
 import TestPage from './pages/TestPage'
 import BuildingMgmt from './pages/management/BuildingMgmt'
 import BuildingStatus from './pages/status/BuildingStatus'
+import SiteStatusTestPage from './pages/SiteStatusTestPage'
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: '/test',
                 element: <TestPage />,
+            },
+            {
+                path: '/sitestatustest',
+                element: <SiteStatusTestPage />,
             },
         ],
     },
