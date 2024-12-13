@@ -94,20 +94,4 @@ export default class Hems {
             })
     }
 
-    // async #getBuildingStats(payload) {
-    //     return this.apiClient
-    //         .buildingStats({
-    //             buildingSeq: '',
-    //             buildingSeqList: [],
-    //             dateDiff: '',
-    //             dateType: 'day',
-    //             endDate: '',
-    //             resourceType: 'R',
-    //             siteSeq: '',
-    //             startDate: '2024-11-06',
-    //         })
-    //         .then(res => {
-    //             console.log('res.data', res.data)
-    //         })
-    // }
 }
