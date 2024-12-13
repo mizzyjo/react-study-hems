@@ -45,6 +45,12 @@ export default class FakeHemsClient {
     }
 
     /* 관리 페이지 APIs... */
+    /** 
+        사이트 관리 APIs 
+    */
+    async epChartData() {
+        return axios.get('/data/management/siteList.json')
+    }
 
     /* 전기 요금제 관리 페이지 APIs... */
     async epChartData() {

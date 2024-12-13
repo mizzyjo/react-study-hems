@@ -132,6 +132,19 @@ export default class HemsClient {
         return this.httpClient.post('/api/buildingStats/getBuildingList', tmpParam)
     }
 
+    /* 관리 페이지 APIs... */
+     /** 
+        사이트 관리 APIs 
+    */
+    async siteList(params) {
+        const tmpParam = {
+            page: 1,
+            siteName: '',
+        }
+        return this.httpClient.post('/api/site/siteList', tmpParam)
+    }
+
+
     /** 
         전기 요금제 관리 APIs 
     */
