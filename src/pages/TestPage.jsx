@@ -109,7 +109,7 @@ export default function TestPage() {
             <PowerCard title={'월 최고 소비 전력량'} kwValue={buildingInfo[2].recvPower + 'kw'} />
             <PowerCard title={'년 최고 소비 전력량'} kwValue={buildingInfo[3].recvPower + 'kw'} />
             <PowerCard title={'누적 소비 전력량'} kwValue={recvPower + 'kw'} />
-            <LineChart chartName={'소비전력량 그래프 (kWh)'} data={chartData} />
+            <LineChart chartTitle={'소비전력량 그래프 (kWh)'} data={chartData} />
             {/* <TestChart2/> */}
             {/* <TestClient /> */}
         </div>
