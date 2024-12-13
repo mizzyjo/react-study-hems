@@ -12,6 +12,7 @@ import TestPage from './pages/TestPage'
 import BuildingMgmt from './pages/management/BuildingMgmt'
 import BuildingStatus from './pages/status/BuildingStatus'
 import SiteStatusTestPage from './pages/SiteStatusTestPage'
+import Eprice from './pages/eprice/Eprice'
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: '/buildingstatus',
                 element: <BuildingStatus />
+            },
+            {
+                path: '/eprice',
+                element: <Eprice />,
             },
             {
                 path: '/test',

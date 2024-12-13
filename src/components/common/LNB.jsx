@@ -37,6 +37,14 @@ export const LNB = props => (
                     </li>
                 </ul>
             </li>
+            <li>
+                전기 요금제 관리
+                <ul>
+                    <li>
+                        <Link to="/eprice">전기 요금제 관리</Link>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </header>
 )
