@@ -3,6 +3,8 @@ import { useHemsApi } from '../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
 import { MixedChart } from '../components/common/MixedChart'
+import { FaBeer } from "react-icons/fa";
+import PowerCard from '../components/common/PowerCard'
 
 export default function SiteStatusTestPage() {
     const { hems } = useHemsApi()
@@ -67,6 +69,7 @@ export default function SiteStatusTestPage() {
     return (
         <div>
             <h1>SiteStatus Test Page</h1>
+            <PowerCard title={'건물 전력량'} kwValue={'123kwh'} description={'detail'} img={FaBeer}/>
             {essDataError || pvDataError ? (
                 <p style={{ color: 'red' }}>데이터를 불러오는 중 오류가 발생했습니다.</p>
             ) : isEssDataLoading || isPvDataLoading ? (
