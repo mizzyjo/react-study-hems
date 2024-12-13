@@ -15,6 +15,10 @@ export default class Hems {
         return this.#getPvData()
     }
 
+    async buildData() {
+        return this.#getBuildData()
+    }
+
     async buildingTotalInfo() {
         return this.#getBuildingTotlaInfo()
     }
@@ -54,6 +58,15 @@ export default class Hems {
             .pvData()
             .then(res => {
                 console.log('res.data pvData', res.data)
+                return res.data
+            })
+    }
+
+    async #getBuildData() {
+        return this.apiClient
+            .buildData()
+            .then(res => {
+                console.log('res.data buildData', res.data)
                 return res.data
             })
     }

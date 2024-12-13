@@ -18,6 +18,9 @@ export default class FakeHemsClient {
     async pvData() {
         return axios.get('/data/status/getPvData.json')
     }
+    async buildData() {
+        return axios.get('/data/status/getBuildData.json')
+    }
 
     /** 
         건물 현황 APIs 
