@@ -63,6 +63,18 @@ export default class HemsClient {
         return this.httpClient.post('/api/siteStats/getBuildData', tmpParam)
     }
 
+    async evConnectionStatsData() {
+        const tmpParam = {
+            dateDiff: '',
+            dateType: 'day',
+            endDate: '',
+            resourceType: 'R',
+            siteSeqList: [],
+            startDate: '2024-11-06',
+        }
+        return this.httpClient.post('/api/siteStats/getEvConnectionStatsData', tmpParam)
+    }
+
     /** 
         건물 현황 APIs 
     */

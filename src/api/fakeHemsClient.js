@@ -21,6 +21,9 @@ export default class FakeHemsClient {
     async buildData() {
         return axios.get('/data/status/getBuildData.json')
     }
+    async evConnectionStatsData() {
+        return axios.get('/data/status/getEvConnectionStatsData.json')
+    }
 
     /** 
         건물 현황 APIs 
