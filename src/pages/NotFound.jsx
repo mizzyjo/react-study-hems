@@ -7,7 +7,7 @@ export default function NotFound() {
             <h2>💿 Hey developer 👋</h2>
             <p>
                 It seems the page you're looking for doesn't exist. <br/> 
-                You might want to check the URL or go back to thehomepage.
+                You might want to check the URL or go back to the homepage.
             </p>
         </div>
     )
