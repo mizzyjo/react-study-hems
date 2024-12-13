@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const BuildintStatusTable = ({ columnHeaders, buildingData }) => {
+export const BuildintStatusTable = ({ data }) => {
     return (
         <>
             <table>
@@ -12,7 +12,7 @@ export const BuildintStatusTable = ({ columnHeaders, buildingData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {buildingData.map((item, idx) => {
+                    {data.map((item, idx) => {
                         return (
                             <tr key={idx}>
                                 <td>{item.buildingName}</td>
@@ -28,3 +28,11 @@ export const BuildintStatusTable = ({ columnHeaders, buildingData }) => {
         </>
     )
 }
+
+const columnHeaders = [
+    '건물명',
+    '사이트',
+    '소비전력',
+    '(일)최대부하(kW)',
+    '최근 13개월 최대부하 (kW)',
+]

@@ -103,7 +103,7 @@ export default function TestPage() {
     return (
         <div>
             <h1>Test Page</h1>
-            <BuildintStatusTable columnHeaders={rowNmdata} buildingData={buildingList}/>
+            <BuildintStatusTable data={buildingList}/>
             <PowerCard title={'순간 최고 소비 전력'} kwValue={buildingInfo[0].recvPower + 'kw'} />
             <PowerCard title={'일 최고 소비 전력량'} kwValue={buildingInfo[1].recvPower + 'kw'} />
             <PowerCard title={'월 최고 소비 전력량'} kwValue={buildingInfo[2].recvPower + 'kw'} />
@@ -156,14 +156,6 @@ const initialChartData = {
         },
     ]
 }
-
-const rowNmdata = [
-    '건물명',
-    '사이트',
-    '소비전력',
-    '(일)최대부하(kW)',
-    '최근 13개월 최대부하 (kW)',
-]
 
 const initialBuildingList = [
     {
