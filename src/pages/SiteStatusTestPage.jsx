@@ -35,7 +35,7 @@ export default function SiteStatusTestPage() {
         if(!isEssDataLoading && !isPvDataLoading){
             const essTimeList = essResultData.resultData.essTimeList
             const essChargeEnergy = essTimeList.map((item, idx) => item.chargeEnergy)
-            const essDisChargeEnergy = essTimeList.map((item, idx) => item.dischargeEnergy)
+            const essDisChargeEnergy = essTimeList.map((item, idx) => -item.dischargeEnergy)
 
             const pvTimeList = pvResultData.resultData.pvTimeList
             const pvEnergy = pvTimeList.map((item) => item.energy)
