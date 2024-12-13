@@ -3,6 +3,18 @@ export default class Hems {
         this.apiClient = apiClient
     }
 
+    async essData() {
+        return this.#getEssData()
+    }
+
+    async evData() {
+        return this.#getEvData()
+    }
+
+    async pvData() {
+        return this.#getPvData()
+    }
+
     async buildingTotalInfo() {
         return this.#getBuildingTotlaInfo()
     }
@@ -17,6 +29,33 @@ export default class Hems {
 
     async buildingStatusList() {
         return this.#getBuildingStatusList()
+    }
+
+    async #getEssData() {
+        return this.apiClient
+            .essData()
+            .then(res => {
+                console.log('res.data essData', res.data)
+                return res.data
+            })
+    }
+
+    async #getEvData() {
+        return this.apiClient
+            .evData()
+            .then(res => {
+                console.log('res.data evData', res.data)
+                return res.data
+            })
+    }
+
+    async #getPvData() {
+        return this.apiClient
+            .pvData()
+            .then(res => {
+                console.log('res.data pvData', res.data)
+                return res.data
+            })
     }
 
     async #getBuildingTotlaInfo() {

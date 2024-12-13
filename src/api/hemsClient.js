@@ -10,8 +10,50 @@ export default class HemsClient {
             },
         })
     }
-
+    
     /* 현황 페이지 APIs... */
+    /** 
+        사이트 현황 APIs
+    */
+    async essData() {
+        const tmpParam = {
+            dateDiff: '',
+            dateType: 'day',
+            endDate: '',
+            resourceType: 'R',
+            siteSeqList: [],
+            startDate: '2024-11-06',
+        }
+        return this.httpClient.post('/api/siteStats/getEssData', tmpParam)
+    }
+
+    async evData() {
+        const tmpParam = {
+            dateDiff: '',
+            dateType: 'day',
+            endDate: '',
+            resourceType: 'R',
+            siteSeqList: [],
+            startDate: '2024-11-06',
+        }
+        return this.httpClient.post('/api/siteStats/getEvData', tmpParam)
+    }
+
+    async pvData() {
+        const tmpParam = {
+            dateDiff: '',
+            dateType: 'day',
+            endDate: '',
+            resourceType: 'R',
+            siteSeqList: [],
+            startDate: '2024-11-06',
+        }
+        return this.httpClient.post('/api/siteStats/getPvData', tmpParam)
+    }
+
+    /** 
+        건물 현황 APIs 
+    */
     async buildingTotalInfo(params) {
         const tmpParam = {
             buildingSeq: '',

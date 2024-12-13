@@ -6,6 +6,22 @@ export default class FakeHemsClient {
     }
 
     /* 현황 페이지 APIs... */
+    /** 
+        사이트 현황 APIs
+    */
+    async essData() {
+        return axios.get('/data/status/getEssData.json')
+    }
+    async evData() {
+        return axios.get('/data/status/getEvData.json')
+    }
+    async pvData() {
+        return axios.get('/data/status/getPvData.json')
+    }
+
+    /** 
+        건물 현황 APIs 
+    */
     async buildingTotalInfo() {
         return axios.get('/data/status/getBuildingTotalInfo.json')
     }
