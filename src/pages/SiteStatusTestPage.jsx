@@ -31,8 +31,18 @@ export default function SiteStatusTestPage() {
         staleTime: 1000 * 60 * 1,
     })
 
+    const {
+        isLoading: isBuildDataLoading,
+        error: buildDataError,
+        data: buildResultData,
+    } = useQuery({
+        queryKey: ['buildData'],
+        queryFn: () => hems.buildData(),
+        staleTime: 1000 * 60 * 1,
+    })
+
     useEffect(() => {
-        if(!isEssDataLoading && !isPvDataLoading){
+        if(!isEssDataLoading && !isPvDataLoading && !isBuildDataLoading){
             const essTimeList = essResultData.resultData.essTimeList
             const essChargeEnergy = essTimeList.map((item, idx) => item.chargeEnergy)
             const essDisChargeEnergy = essTimeList.map((item, idx) => -item.dischargeEnergy)
@@ -40,15 +50,19 @@ export default function SiteStatusTestPage() {
             const pvTimeList = pvResultData.resultData.pvTimeList
             const pvEnergy = pvTimeList.map((item) => item.energy)
 
+            const buildTimeList = buildResultData.resultData.buildTimeList
+            const buildEnergy = buildTimeList.map((item) => item.energy)
+
             setChartConfig(
                 produce(chartConfig, darft => {
                     darft.data.datasets[0].data = essChargeEnergy
                     darft.data.datasets[1].data = essDisChargeEnergy
-                    darft.data.datasets[2].data = pvEnergy
+                    darft.data.datasets[2].data = buildEnergy
+                    darft.data.datasets[3].data = pvEnergy
                 })
             )
         }
-    }, [isEssDataLoading, isPvDataLoading])
+    }, [isEssDataLoading, isPvDataLoading, isBuildDataLoading])
 
     return (
         <div>
@@ -89,6 +103,14 @@ const initialChartConfig = {
                 label: 'ESS방전',
                 data: Array(24).fill(0),
                 backgroundColor: '#38A2E7',
+                borderWidth: 1,
+                order: 2,
+            },
+            {
+                type: 'bar',
+                label: '건물',
+                data: Array(24).fill(0),
+                backgroundColor: '#FCAE34',
                 borderWidth: 1,
                 order: 2,
             },
