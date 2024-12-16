@@ -148,7 +148,7 @@ const initialChartConfig = {
                 type: 'bar',
                 label: 'ESS충전',
                 data: Array(24).fill(0), // 기본값으로 0으로 채운 배열 세팅
-                backgroundColor: '#FF6083',
+                backgroundColor: '#C73C3D',
                 borderWidth: 1,
                 order: 2,
             },
@@ -156,7 +156,7 @@ const initialChartConfig = {
                 type: 'bar',
                 label: 'ESS방전',
                 data: Array(24).fill(0),
-                backgroundColor: '#38A2E7',
+                backgroundColor: '#4C5AD6',
                 borderWidth: 1,
                 order: 2,
             },
@@ -164,7 +164,7 @@ const initialChartConfig = {
                 type: 'bar',
                 label: '건물',
                 data: Array(24).fill(0),
-                backgroundColor: '#FCAE34',
+                backgroundColor: '#FFAF36',
                 borderWidth: 1,
                 order: 2,
             },
@@ -172,9 +172,9 @@ const initialChartConfig = {
                 type: 'line',
                 label: 'PV발전량',
                 data: Array(24).fill(0),
-                backgroundColor: '#4BC1C2',
-                borderColor: '#4FBEBE',
-                borderWidth: 8,
+                backgroundColor: '#535CD9',
+                borderColor: '#535CD9',
+                borderWidth: 5,
                 order: 1,
             },
         ],
@@ -206,8 +206,8 @@ const initialBoxPlotConfig = {
             {
                 label: '시간',
                 data: [],
-                backgroundColor: '#239EC4',
-                borderColor: '#239EC4',
+                backgroundColor: '#4C5CD2',
+                borderColor: '#4C5CD2',
                 borderWidth:3,
                 order: 2,
                 yAxisID: 'y-left', // 첫 번째 데이터셋은 왼쪽 y축을 사용
@@ -216,8 +216,8 @@ const initialBoxPlotConfig = {
                 type: 'line',
                 label: 'EV 차량',
                 data: Array(24).fill(0),
-                backgroundColor: '#A0D6B4',
-                borderColor: '#A0D6B4',
+                backgroundColor: '#08A2CA',
+                borderColor: '#08A2CA',
                 borderWidth: 3,
                 order: 1,
                 yAxisID: 'y-right', // 두 번째 데이터셋은 오른쪽 y축을 사용
@@ -250,7 +250,7 @@ const initialBoxPlotConfig = {
              x: {
                 title: {
                     display: true,
-                    text: '(시간)',
+                    text: '시간',
                     // align: 'start', // 타이틀 왼쪽 정렬
                 },
             },
