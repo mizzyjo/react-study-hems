@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import TestClient from '../components/demo/TestClient'
-import TestChart2 from '../components/demo/TestChart2'
-import { useHemsApi } from '../context/HemsApiContext'
+import TestClient from '../../components/demo/TestClient'
+import TestChart2 from '../../components/demo/TestChart2'
+import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
-import LineChart from '../components/common/LineChart'
+import LineChart from '../../components/common/LineChart'
 import { produce } from 'immer'
-import PowerCard from '../components/common/PowerCard'
-import { BuildintStatusTable } from '../components/status/BuildingStatusTable'
+import PowerCard from '../../components/common/PowerCard'
+import { BuildintStatusTable } from '../../components/status/BuildingStatusTable'
 
 export default function TestPage() {
     const { hems } = useHemsApi()

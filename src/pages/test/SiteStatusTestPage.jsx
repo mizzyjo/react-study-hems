@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useHemsApi } from '../context/HemsApiContext'
+import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
-import { MixedChart } from '../components/common/MixedChart'
+import { MixedChart } from '../../components/common/MixedChart'
 import { FaBeer } from "react-icons/fa";
-import PowerCard from '../components/common/PowerCard'
+import PowerCard from '../../components/common/PowerCard'
 
 export default function SiteStatusTestPage() {
     const { hems } = useHemsApi()

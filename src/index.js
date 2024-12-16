@@ -8,11 +8,12 @@ import SiteMgmt from './pages/management/SiteMgmt'
 import SiteStatus from './pages/status/SiteStatus'
 import NotFound from './pages/NotFound'
 import Dashboard from './pages/Dashboard'
-import TestPage from './pages/TestPage'
+import TestPage from './pages/test/TestPage'
 import BuildingMgmt from './pages/management/BuildingMgmt'
 import BuildingStatus from './pages/status/BuildingStatus'
-import SiteStatusTestPage from './pages/SiteStatusTestPage'
+import SiteStatusTestPage from './pages/test/SiteStatusTestPage'
 import Eprice from './pages/eprice/Eprice'
+import EpriceTestPage from './pages/EpriceTestPage'
 
 const router = createBrowserRouter([
     {
