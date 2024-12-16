@@ -53,6 +53,10 @@ const router = createBrowserRouter([
                 path: '/sitestatustest',
                 element: <SiteStatusTestPage />,
             },
+            {
+                path: '/epricetest',
+                element: <EpriceTestPage />,
+            },
         ],
     },
 ])

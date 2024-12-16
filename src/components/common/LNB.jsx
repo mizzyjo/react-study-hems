@@ -13,6 +13,9 @@ export const LNB = props => (
                     <li>
                         <Link to="/test">빌딩 현황 TEST PAGE</Link>
                     </li>
+                    <li>
+                        <Link to="/epricetest">전기 요금 TEST PAGE</Link>
+                    </li>
                 </ul>
             </li>
             <li>
