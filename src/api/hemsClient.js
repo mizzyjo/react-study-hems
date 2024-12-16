@@ -148,9 +148,17 @@ export default class HemsClient {
     /** 
         전기 요금제 관리 APIs 
     */
-    async epChartData(params) {
+    async epChartDataByDay(params) {
         const tmpParam = {
             dateType: 'day',
+            epSeq: '2',
+        }
+        return this.httpClient.post('/api/eprice/epChartData', tmpParam)
+    }
+
+    async epChartDataByYear(params) {
+        const tmpParam = {
+            dateType: 'year',
             epSeq: '2',
         }
         return this.httpClient.post('/api/eprice/epChartData', tmpParam)

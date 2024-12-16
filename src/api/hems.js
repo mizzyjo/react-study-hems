@@ -43,8 +43,12 @@ export default class Hems {
         return this.#getSiteList()
     }
 
-    async epChartData() {
-        return this.#getEpChartData()
+    async epChartDataByDay() {
+        return this.#getEpChartDataByDay()
+    }
+
+    async epChartDataByYear() {
+        return this.#getEpChartDataByYear()
     }
 
     async #getEssData() {
@@ -137,11 +141,20 @@ export default class Hems {
             })
     }
 
-    async #getEpChartData() {
+    async #getEpChartDataByDay() {
         return this.apiClient
-            .epChartData()
+            .epChartDataByDay()
             .then(res => {
-                console.log('res.data epChartData', res.data)
+                console.log('res.data epChartData(D)', res.data)
+                return res.data
+            })
+    }
+
+    async #getEpChartDataByYear() {
+        return this.apiClient
+            .epChartDataByYear()
+            .then(res => {
+                console.log('res.data epChartData(Y)', res.data)
                 return res.data
             })
     }
