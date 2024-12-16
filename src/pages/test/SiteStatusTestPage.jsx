@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
-import { MixedChart } from '../../components/common/MixedChart'
+import { CustomChart } from '../../components/common/CustomChart'
 import { FaBeer } from "react-icons/fa";
 import PowerCard from '../../components/common/PowerCard'
 
@@ -76,7 +76,7 @@ export default function SiteStatusTestPage() {
                 <p>데이터를 불러오는 중입니다...</p>
             ) : (
                 chartConfig?.data?.datasets?.length > 0 && (
-                        <MixedChart
+                        <CustomChart
                             chartTitle={'사이트 현황 - 통합'}
                             data={chartConfig.data}
                             options={chartConfig.options}
