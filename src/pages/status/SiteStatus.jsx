@@ -8,7 +8,7 @@ import PowerCard from '../../components/common/PowerCard'
 import { BoxplotChart } from '../../components/common/BoxplotChart'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
-import { QUERY_KEYS } from '../../config/queryConfig'
+import { QUERY_KEYS, STALE_TIME } from '../../config/queryConfig'
 import { initialIntegratedChartConfig, initialEvConnectionChartConfig } from '../../config/siteStatusChart'
 
 export default function SiteStatus() {
@@ -25,7 +25,7 @@ export default function SiteStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.essData],
         queryFn: () => hems.essData(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     // PV 발전량
@@ -36,7 +36,7 @@ export default function SiteStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.pvData],
         queryFn: () => hems.pvData(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const {
@@ -46,7 +46,7 @@ export default function SiteStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.buildData],
         queryFn: () => hems.buildData(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const integratedChartConfig = produce(initialIntegratedChartConfig, draft => {
@@ -76,7 +76,7 @@ export default function SiteStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.evConnectionStatus],
         queryFn: () => hems.evConnectionStatsData(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const evConnectionChartConfig = produce(initialEvConnectionChartConfig, draft => {

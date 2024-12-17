@@ -6,7 +6,7 @@ import { produce } from 'immer'
 import PowerCard from '../../components/common/PowerCard'
 import { BuildintStatusTable } from '../../components/status/BuildingStatusTable'
 import { initialChartConfig } from '../../config/buildingStatusChart'
-import { QUERY_KEYS } from '../../config/queryConfig'
+import { QUERY_KEYS, STALE_TIME } from '../../config/queryConfig'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
 
@@ -21,7 +21,7 @@ export default function BuildingStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.buildingTotalInfo],
         queryFn: () => hems.buildingTotalInfo(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const buildingInfo = buildingTotalData?.resultData.buildingInfoList || initialBuildingInfo
@@ -34,7 +34,7 @@ export default function BuildingStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.buildingStats],
         queryFn: () => hems.buildingStats(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const recvPower = buildingStatsData?.resultData.recvPower || 0
@@ -47,7 +47,7 @@ export default function BuildingStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.consumeRecvPower],
         queryFn: () => hems.consumeRecvPower(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const chartConfig = produce(initialChartConfig, (draft) => {
@@ -65,7 +65,7 @@ export default function BuildingStatus() {
     } = useQuery({
         queryKey: [QUERY_KEYS.buildingStatusList],
         queryFn: () => hems.buildingStatusList(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const buildingList = buildingListData?.list || initialBuildingList

@@ -5,7 +5,7 @@ import { produce } from 'immer'
 import { CustomChart } from '../../components/common/CustomChart'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
-import { QUERY_KEYS } from '../../config/queryConfig'
+import { QUERY_KEYS, STALE_TIME } from '../../config/queryConfig'
 import { initialChartConfigByDay, initialChartConfigByYear } from '../../config/epriceChart'
 
 export default function Eprice() {
@@ -20,7 +20,7 @@ export default function Eprice() {
     } = useQuery({
         queryKey: [QUERY_KEYS.epriceByDay],
         queryFn: () => hems.epChartDataByDay(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const chartConfigByDay = produce(initialChartConfigByDay, draft => {
@@ -36,7 +36,7 @@ export default function Eprice() {
     } = useQuery({
         queryKey: [QUERY_KEYS.epriceByYear],
         queryFn: () => hems.epChartDataByYear(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const chartConfigByYear = produce(initialChartConfigByYear, draft => {

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { Loading } from '../../components/common/Loading'
-import { QUERY_KEYS } from '../../config/queryConfig'
+import { QUERY_KEYS, STALE_TIME } from '../../config/queryConfig'
 import { useHemsApi } from '../../context/HemsApiContext'
 import { Error } from '../../components/common/Error'
 import { BuildintStatusTable } from '../../components/status/BuildingStatusTable'
@@ -17,7 +17,7 @@ export default function BuildingMgmt() {
     } = useQuery({
         queryKey: [QUERY_KEYS.buildingStatusList],
         queryFn: () => hems.buildingStatusList(),
-        staleTime: 1000 * 60 * 1,
+        staleTime: STALE_TIME.ONE_MINUTE,
     })
 
     const buildingList = buildingListData?.list || initialBuildingList

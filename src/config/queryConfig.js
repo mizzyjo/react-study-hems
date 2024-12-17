@@ -21,6 +21,10 @@ export const QUERY_KEYS = {
     siteList: 'siteList',
 }
 
+export const STALE_TIME = {
+    ONE_MINUTE: 1000 * 60 * 1,
+}
+
 /** 사용 예
     queryKey: [QUERY_KEYS.priceByDay]
 */
