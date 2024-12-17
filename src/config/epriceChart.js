@@ -1,4 +1,4 @@
-const initialChartConfigByYear = {
+export const initialChartConfigByYear = {
     data: {
         labels: Array.from({ length: 12 }, (_, i) => `${String(i + 1)}월`),
         datasets: [
@@ -42,7 +42,7 @@ const initialChartConfigByYear = {
     },
 }
 
-const initialChartConfigByDay = {
+export const initialChartConfigByDay = {
     data: {
         labels: Array.from({ length: 24 }, (_, i) => String(i)),
         datasets: [
