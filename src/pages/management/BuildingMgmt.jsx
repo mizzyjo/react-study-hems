@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { Loading } from '../../components/common/Loading'
-import { QUERY_KEYS } from '../../config/querykeys'
+import { QUERY_KEYS } from '../../config/queryConfig'
 import { useHemsApi } from '../../context/HemsApiContext'
 import { Error } from '../../components/common/Error'
 import { BuildintStatusTable } from '../../components/status/BuildingStatusTable'

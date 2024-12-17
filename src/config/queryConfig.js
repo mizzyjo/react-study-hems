@@ -1,4 +1,4 @@
-// Tanstack Query 키
+// Tanstack Query 관련 Config 파일
 
 export const QUERY_KEYS = {
     // 사이트 현황

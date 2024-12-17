@@ -8,7 +8,7 @@ import PowerCard from '../../components/common/PowerCard'
 import { BoxplotChart } from '../../components/common/BoxplotChart'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
-import { QUERY_KEYS } from '../../config/querykeys'
+import { QUERY_KEYS } from '../../config/queryConfig'
 import { initialIntegratedChartConfig, initialEvConnectionChartConfig } from '../../config/siteStatusChart'
 
 export default function SiteStatus() {

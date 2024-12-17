@@ -6,7 +6,7 @@ import { produce } from 'immer'
 import PowerCard from '../../components/common/PowerCard'
 import { BuildintStatusTable } from '../../components/status/BuildingStatusTable'
 import { initialChartConfig } from '../../config/buildingStatusChart'
-import { QUERY_KEYS } from '../../config/querykeys'
+import { QUERY_KEYS } from '../../config/queryConfig'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
 

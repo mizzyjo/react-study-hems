@@ -5,7 +5,7 @@ import { produce } from 'immer'
 import { CustomChart } from '../../components/common/CustomChart'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
-import { QUERY_KEYS } from '../../config/querykeys'
+import { QUERY_KEYS } from '../../config/queryConfig'
 import { initialChartConfigByDay, initialChartConfigByYear } from '../../config/epriceChart'
 
 export default function Eprice() {
