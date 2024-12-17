@@ -8,6 +8,7 @@ import PowerCard from '../../components/common/PowerCard'
 import { BoxplotChart } from '../../components/common/BoxplotChart'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
+import { QUERY_KEYS } from '../../config/querykeys'
 import { initialIntegratedChartConfig, initialEvConnectionChartConfig } from '../../config/siteStatusChart'
 
 export default function SiteStatus() {
@@ -21,7 +22,7 @@ export default function SiteStatus() {
         error: essDataError,
         data: essResultData,
     } = useQuery({
-        queryKey: ['essData'],
+        queryKey: [QUERY_KEYS.essData],
         queryFn: () => hems.essData(),
         staleTime: 1000 * 60 * 1,
     })
@@ -32,7 +33,7 @@ export default function SiteStatus() {
         error: pvDataError,
         data: pvResultData,
     } = useQuery({
-        queryKey: ['pvData'],
+        queryKey: [QUERY_KEYS.pvData],
         queryFn: () => hems.pvData(),
         staleTime: 1000 * 60 * 1,
     })
@@ -42,7 +43,7 @@ export default function SiteStatus() {
         error: buildDataError,
         data: buildResultData,
     } = useQuery({
-        queryKey: ['buildData'],
+        queryKey: [QUERY_KEYS.buildData],
         queryFn: () => hems.buildData(),
         staleTime: 1000 * 60 * 1,
     })
@@ -76,7 +77,7 @@ export default function SiteStatus() {
         error: evConnectionDataError,
         data: evConnectionResultData,
     } = useQuery({
-        queryKey: ['evConnectionStatus'],
+        queryKey: [QUERY_KEYS.evConnectionStatus],
         queryFn: () => hems.evConnectionStatsData(),
         staleTime: 1000 * 60 * 1,
     })
