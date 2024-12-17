@@ -13,7 +13,7 @@ import BuildingMgmt from './pages/management/BuildingMgmt'
 import BuildingStatus from './pages/status/BuildingStatus'
 import SiteStatusTestPage from './pages/test/SiteStatusTestPage'
 import Eprice from './pages/eprice/Eprice'
-import EpriceTestPage from './pages/EpriceTestPage'
+import EpriceTestPage from './pages/test/EpriceTestPage'
 
 const router = createBrowserRouter([
     {

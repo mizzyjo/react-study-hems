@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useHemsApi } from '../context/HemsApiContext'
+import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
-import { CustomChart } from '../components/common/CustomChart'
-import { Loading } from '../components/common/Loading'
-import { Error } from '../components/common/Error'
-import { QUERY_KEYS } from '../config/querykeys'
+import { CustomChart } from '../../components/common/CustomChart'
+import { Loading } from '../../components/common/Loading'
+import { Error } from '../../components/common/Error'
+import { QUERY_KEYS } from '../../config/querykeys'
 
 export default function EpriceTestPage() {
     const { hems } = useHemsApi()
