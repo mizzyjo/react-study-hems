@@ -80,7 +80,7 @@ export default function BuildingStatus() {
 
     return (
         <div>
-            <h1>Test Page</h1>
+            <h1>건물 현황</h1>
             {buildingInfo.map((info, idx) => (
                 <PowerCard key={info.flagDate} title={powerCardTitles[idx]} kwValue={info.recvPower + 'kw'} />
             ))}
