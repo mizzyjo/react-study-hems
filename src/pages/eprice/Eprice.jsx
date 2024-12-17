@@ -11,7 +11,7 @@ import { initialChartConfigByDay, initialChartConfigByYear } from '../../config/
 export default function Eprice() {
     const { hems } = useHemsApi()
 
-    const [selectedChart, setSelectedChart] = useState('day')
+    const [selectedOption, setSelectedOption] = useState('day')
 
     const {
         isLoading: isPriceByDayDataLoading,
@@ -48,7 +48,7 @@ export default function Eprice() {
     })
 
     const handleSelectedChart = (e) => {
-        setSelectedChart(e.target.value)
+        setSelectedOption(e.target.value)
     }
 
     if (isPriceByDayDataLoading || isPriceByYearDataLoading) {
@@ -66,7 +66,7 @@ export default function Eprice() {
                 <option value="day">일</option>
                 <option value="year">년</option>
             </select>
-            {selectedChart === 'day' ? (
+            {selectedOption === 'day' ? (
                 <CustomChart key="byDay" data={chartConfigByDay.data} options={chartConfigByDay.options} />
             ) : (
                 <CustomChart key="byYear" data={chartConfigByYear.data} options={chartConfigByYear.options} />
