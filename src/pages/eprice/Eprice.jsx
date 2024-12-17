@@ -12,8 +12,6 @@ export default function Eprice() {
     const { hems } = useHemsApi()
 
     const [selectedChart, setSelectedChart] = useState('day')
-    const [chartConfigByDay, setChartConfigByDay] = useState(initialChartConfigByDay)
-    const [chartConfigByYear, setChartConfigByYear] = useState(initialChartConfigByYear)
 
     const {
         isLoading: isPriceByDayDataLoading,
@@ -23,6 +21,12 @@ export default function Eprice() {
         queryKey: [QUERY_KEYS.epriceByDay],
         queryFn: () => hems.epChartDataByDay(),
         staleTime: 1000 * 60 * 1,
+    })
+
+    const chartConfigByDay = produce(initialChartConfigByDay, draft => {
+        if (priceByDayResultData) {
+            draft.data.datasets[0].data = priceByDayResultData.resultData.epChartList.map(item => item.recvPrice)
+        }
     })
 
     const {
@@ -35,28 +39,13 @@ export default function Eprice() {
         staleTime: 1000 * 60 * 1,
     })
 
-    useEffect(() => {
-        if (priceByDayResultData) {
-            const epChartListByDay = priceByDayResultData.resultData.epChartList.map(item => item.recvPrice)
-            setChartConfigByDay(produce(chartConfigByDay, draft => {
-                draft.data.datasets[0].data = epChartListByDay
-            }))
-        }
-    }, [priceByDayResultData])
-    
-    useEffect(() => {
+    const chartConfigByYear = produce(initialChartConfigByYear, draft => {
         if (priceByYearResultData) {
-            const highRecvPrice = priceByYearResultData.resultData.epChartList.map(item => item.highRecvPrice)
-            const midRecvPrice = priceByYearResultData.resultData.epChartList.map(item => item.midRecvPrice)
-            const lowRecvPrice = priceByYearResultData.resultData.epChartList.map(item => item.lowRecvPrice)
-    
-            setChartConfigByYear(produce(chartConfigByYear, draft => {
-                draft.data.datasets[0].data = highRecvPrice
-                draft.data.datasets[1].data = midRecvPrice
-                draft.data.datasets[2].data = lowRecvPrice
-            }))
+            draft.data.datasets[0].data = priceByYearResultData.resultData.epChartList.map(item => item.highRecvPrice)
+            draft.data.datasets[1].data = priceByYearResultData.resultData.epChartList.map(item => item.midRecvPrice)
+            draft.data.datasets[2].data = priceByYearResultData.resultData.epChartList.map(item => item.lowRecvPrice)
         }
-    }, [priceByYearResultData])
+    })
 
     const handleSelectedChart = (e) => {
         setSelectedChart(e.target.value)
@@ -64,7 +53,9 @@ export default function Eprice() {
 
     if (isPriceByDayDataLoading || isPriceByYearDataLoading) {
         return <Loading />
-    } else if (priceByDayDataError || priceByYearDataError) {
+    }
+    
+    if (priceByDayDataError || priceByYearDataError) {
         return <Error error={{ priceByDayDataError, priceByYearDataError }} />
     }
 
