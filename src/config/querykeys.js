@@ -16,6 +16,9 @@ export const QUERY_KEYS = {
     // 전기 요금제 관리
     epriceByDay: 'epriceByDay',
     epriceByYear: 'epriceByYear',
+
+    // 사이트 관리
+    siteList: 'siteList',
 }
 
 /** 사용 예
