@@ -7,7 +7,7 @@ export const initialIntegratedChartConfig = {
                 type: 'bar',
                 label: 'ESS충전',
                 data: Array(24).fill(0), // 기본값으로 0으로 채운 배열 세팅
-                backgroundColor: '#FF6083',
+                backgroundColor: '#C73C3D',
                 borderWidth: 1,
                 order: 2,
             },
@@ -15,7 +15,7 @@ export const initialIntegratedChartConfig = {
                 type: 'bar',
                 label: 'ESS방전',
                 data: Array(24).fill(0),
-                backgroundColor: '#38A2E7',
+                backgroundColor: '#4C5AD6',
                 borderWidth: 1,
                 order: 2,
             },
@@ -23,7 +23,7 @@ export const initialIntegratedChartConfig = {
                 type: 'bar',
                 label: '건물',
                 data: Array(24).fill(0),
-                backgroundColor: '#FCAE34',
+                backgroundColor: '#FFAF36',
                 borderWidth: 1,
                 order: 2,
             },
@@ -31,28 +31,28 @@ export const initialIntegratedChartConfig = {
                 type: 'line',
                 label: 'PV발전량',
                 data: Array(24).fill(0),
-                backgroundColor: '#4BC1C2',
-                borderColor: '#4FBEBE',
-                borderWidth: 8,
+                backgroundColor: '#535CD9',
+                borderColor: '#535CD9',
+                borderWidth: 5,
                 order: 1,
             },
         ],
     },
     options: {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Chart.js Bar Chart - Stacked',
-            },
-        },
+        // plugins: {
+        //     title: {
+        //         display: true,
+        //         text: 'Chart.js Bar Chart - Stacked',
+        //     },
+        // },
         responsive: true,
         scales: {
             x: {
                 stacked: true,
             },
-            y: {
-                stacked: true,
-            },
+            // y: {
+            //     stacked: true,
+            // },
         },
     },
 }
@@ -66,8 +66,8 @@ export const initialEvConnectionChartConfig = {
             {
                 label: '시간',
                 data: [],
-                backgroundColor: '#239EC4',
-                borderColor: '#239EC4',
+                backgroundColor: '#4C5CD2',
+                borderColor: '#4C5CD2',
                 borderWidth:3,
                 order: 2,
                 yAxisID: 'y-left', // 첫 번째 데이터셋은 왼쪽 y축을 사용
@@ -76,8 +76,8 @@ export const initialEvConnectionChartConfig = {
                 type: 'line',
                 label: 'EV 차량',
                 data: Array(24).fill(0),
-                backgroundColor: '#A0D6B4',
-                borderColor: '#A0D6B4',
+                backgroundColor: '#08A2CA',
+                borderColor: '#08A2CA',
                 borderWidth: 3,
                 order: 1,
                 yAxisID: 'y-right', // 두 번째 데이터셋은 오른쪽 y축을 사용
