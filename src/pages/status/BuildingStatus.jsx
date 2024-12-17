@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import LineChart from '../../components/common/LineChart'
@@ -7,6 +7,8 @@ import PowerCard from '../../components/common/PowerCard'
 import { BuildintStatusTable } from '../../components/status/BuildingStatusTable'
 import { initialChartConfig } from '../../config/buildingStatusChart'
 import { QUERY_KEYS } from '../../config/querykeys'
+import { Loading } from '../../components/common/Loading'
+import { Error } from '../../components/common/Error'
 
 export default function BuildingStatus() {
     const { hems } = useHemsApi()
@@ -22,13 +24,7 @@ export default function BuildingStatus() {
         staleTime: 1000 * 60 * 1,
     })
 
-    const [buildingInfo, setBuildingInfo] = useState(initialBuildingInfo)
-
-    useEffect(() => {
-        if(!isBuildingTotalDataLoading) {
-            setBuildingInfo(buildingTotalData.resultData.buildingInfoList)
-        }
-    }, [isBuildingTotalDataLoading])
+    const buildingInfo = buildingTotalData?.resultData.buildingInfoList || initialBuildingInfo
 
     // 누적 소비 전력량
     const {
@@ -41,14 +37,7 @@ export default function BuildingStatus() {
         staleTime: 1000 * 60 * 1,
     })
 
-    const [recvPower, setRecvPower] = useState(0)
-
-    useEffect(() => {
-        if(!isBuildingStatsLoading) {
-            setRecvPower(buildingStatsData.resultData.recvPower)
-        }
-
-    }, [isBuildingStatsLoading])
+    const recvPower = buildingStatsData?.resultData.recvPower || 0
 
     // 소비 전력량 그래프
     const {
@@ -61,21 +50,12 @@ export default function BuildingStatus() {
         staleTime: 1000 * 60 * 1,
     })
 
-    const [chartConfig, setChartConfig] = useState(initialChartConfig)
-
-    useEffect(() => {
-        if (!isConsumePowerLoading) {
-            const buildingPrevList = consumePowerData.resultData.buildingPrevList.map(item => item.recvPower)
-            const buildingList = consumePowerData.resultData.buildingList.map(item => item.recvPower)
-
-            setChartConfig(
-                produce(chartConfig, draft => {
-                    draft.datasets[0].data = buildingPrevList
-                    draft.datasets[1].data = buildingList
-                }),
-            )
+    const chartConfig = produce(initialChartConfig, (draft) => {
+        if (consumePowerData) {
+            draft.datasets[0].data = consumePowerData.resultData.buildingPrevList.map(item => item.recvPower)
+            draft.datasets[1].data = consumePowerData.resultData.buildingList.map(item => item.recvPower)
         }
-    }, [isConsumePowerLoading])
+    })
 
     // 빌딩 리스트
     const {
@@ -88,13 +68,7 @@ export default function BuildingStatus() {
         staleTime: 1000 * 60 * 1,
     })
 
-    const [buildingList, setBuildingList] = useState(initialBuildingList)
-
-    useEffect(() => {
-        if(!isBuildingListLoading) {
-            setBuildingList(buildingListData.list)
-        }
-    }, [isBuildingListLoading])
+    const buildingList = buildingListData?.list || initialBuildingList
 
     if (isBuildingTotalDataLoading || isBuildingStatsLoading || isConsumePowerLoading || isBuildingListLoading) {
         return <Loading />
@@ -107,16 +81,22 @@ export default function BuildingStatus() {
     return (
         <div>
             <h1>Test Page</h1>
-            <PowerCard title={'순간 최고 소비 전력'} kwValue={buildingInfo[0].recvPower + 'kw'} />
-            <PowerCard title={'일 최고 소비 전력량'} kwValue={buildingInfo[1].recvPower + 'kw'} />
-            <PowerCard title={'월 최고 소비 전력량'} kwValue={buildingInfo[2].recvPower + 'kw'} />
-            <PowerCard title={'년 최고 소비 전력량'} kwValue={buildingInfo[3].recvPower + 'kw'} />
+            {buildingInfo.map((info, idx) => (
+                <PowerCard key={info.flagDate} title={powerCardTitles[idx]} kwValue={info.recvPower + 'kw'} />
+            ))}
             <PowerCard title={'누적 소비 전력량'} kwValue={recvPower + 'kw'} />
             <LineChart chartTitle={'소비전력량 그래프 (kWh)'} data={chartConfig} />
-            <BuildintStatusTable data={buildingList}/>
+            <BuildintStatusTable data={buildingList} />
         </div>
     )
 }
+
+const powerCardTitles = [
+    '순간 최고 소비 전력', 
+    '일 최고 소비 전력량', 
+    '월 최고 소비 전력량', 
+    '년 최고 소비 전력량'
+]
 
 const initialBuildingInfo = [
     {
