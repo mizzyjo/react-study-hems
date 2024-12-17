@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
@@ -14,8 +14,9 @@ import { initialIntegratedChartConfig, initialEvConnectionChartConfig } from '..
 export default function SiteStatus() {
     const { hems } = useHemsApi()
 
-    const [chartConfig, setChartConfig] = useState(initialIntegratedChartConfig)
-
+    /**
+     * 사이트 현황 - 통합 차트 (Mixed Chart)
+     */
     // ESS 충방전량
     const {
         isLoading: isEssDataLoading,
@@ -48,30 +49,26 @@ export default function SiteStatus() {
         staleTime: 1000 * 60 * 1,
     })
 
-    useEffect(() => {
-        if(!isEssDataLoading && !isPvDataLoading && !isBuildDataLoading){
+    const integratedChartConfig = produce(initialIntegratedChartConfig, draft => {
+        if (essResultData && pvResultData && buildResultData) {
             const essTimeList = essResultData.resultData.essTimeList
-            const essChargeEnergy = essTimeList.map((item, idx) => item.chargeEnergy)
-            const essDisChargeEnergy = essTimeList.map((item, idx) => -item.dischargeEnergy)
+            const essChargeEnergy = essTimeList.map((item) => item.chargeEnergy)
+            const essDisChargeEnergy = essTimeList.map((item) => -item.dischargeEnergy)
 
-            const pvTimeList = pvResultData.resultData.pvTimeList
-            const pvEnergy = pvTimeList.map((item) => item.energy)
+            const pvEnergy = pvResultData.resultData.pvTimeList.map((item) => item.energy)
 
-            const buildTimeList = buildResultData.resultData.buildTimeList
-            const buildEnergy = buildTimeList.map((item) => item.energy)
+            const buildEnergy = buildResultData.resultData.buildTimeList.map((item) => item.energy)
 
-            setChartConfig(
-                produce(chartConfig, darft => {
-                    darft.data.datasets[0].data = essChargeEnergy
-                    darft.data.datasets[1].data = essDisChargeEnergy
-                    darft.data.datasets[2].data = buildEnergy
-                    darft.data.datasets[3].data = pvEnergy
-                })
-            )
+            draft.data.datasets[0].data = essChargeEnergy
+            draft.data.datasets[1].data = essDisChargeEnergy
+            draft.data.datasets[2].data = buildEnergy
+            draft.data.datasets[3].data = pvEnergy
         }
-    }, [isEssDataLoading, isPvDataLoading, isBuildDataLoading])
+    })
 
-    // 시간대별 EV 충전기 연결 현황 그래프(boxplot chart 그리기)
+    /**
+     * 시간대별 EV 충전기 연결 현황 차트 (Boxplot Chart)
+     */
     const {
         isLoading: isEvConnectionDataLoading,
         error: evConnectionDataError,
@@ -82,10 +79,7 @@ export default function SiteStatus() {
         staleTime: 1000 * 60 * 1,
     })
 
-    const [boxplotConfig, setBoxplotConfig] = useState(initialEvConnectionChartConfig)
-
-
-    useEffect(() => {
+    const evConnectionChartConfig = produce(initialEvConnectionChartConfig, draft => {
         if(evConnectionResultData){
             const evConnStatus = evConnectionResultData.resultData.evTimeList.map(item => {
                 return {
@@ -98,17 +92,11 @@ export default function SiteStatus() {
             })
 
             const evCnt =  evConnectionResultData.resultData.evTimeList.map(item => item.cnt)
-            
-            setBoxplotConfig(
-                produce(boxplotConfig, darft => {
-                    darft.data.datasets[0].data = evConnStatus
-                    darft.data.datasets[1].data = evCnt
-                })
-            )
 
+            draft.data.datasets[0].data = evConnStatus
+            draft.data.datasets[1].data = evCnt
         }
-    }, [evConnectionResultData])
-
+    })
 
     if (isEssDataLoading || isPvDataLoading || isBuildDataLoading || isEvConnectionDataLoading) {
         return <Loading />
@@ -122,18 +110,18 @@ export default function SiteStatus() {
         <div>
             <h1>사이트 현황</h1>
             <PowerCard title={'건물 전력량'} kwValue={'123kwh'} description={'detail'} img={FaBeer}/>
-            {chartConfig?.data?.datasets?.length > 0 && (
+            {integratedChartConfig?.data?.datasets?.length > 0 && (
                 <CustomChart
                     chartTitle={'사이트 현황 - 통합'}
-                    data={chartConfig.data}
-                    options={chartConfig.options}
+                    data={integratedChartConfig.data}
+                    options={integratedChartConfig.options}
                 />
             )}
             {evConnectionResultData && (
                 <BoxplotChart
                     chartTitle={'시간대별 EV 충전기 연결 현황'}
-                    data={boxplotConfig.data}
-                    options={boxplotConfig.options}
+                    data={evConnectionChartConfig.data}
+                    options={evConnectionChartConfig.options}
                 />
             )}
         </div>
