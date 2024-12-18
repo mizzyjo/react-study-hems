@@ -22,12 +22,12 @@ function App() {
         <>
         <QueryClientProvider client={queryClient}>
             <HemsApiProvider>
-                <container className={styles.container}>
+                <div className={styles.container}>
                     <LNB />
-                    <content className={styles.content}>
+                    <div className={styles.content}>
                         <Outlet />
-                    </content>
-                </container>
+                    </div>
+                </div>
             </HemsApiProvider>
         </QueryClientProvider>
         </>
