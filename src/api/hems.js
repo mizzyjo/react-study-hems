@@ -23,6 +23,10 @@ export default class Hems {
         return this.#getEvConnectionStatsData()
     }
 
+    async prodPower() {
+        return this.#getProdPower()
+    }
+
     async buildingTotalInfo() {
         return this.#getBuildingTotlaInfo()
     }
@@ -94,6 +98,15 @@ export default class Hems {
             console.log('res.data evConnectionStatsData', res.data)
             return res.data
         })
+    }
+
+    async #getProdPower() {
+        return this.apiClient
+            .prodPower()
+            .then(res => {
+                console.log('res.data prodPower', res.data)
+                return res.data
+            })
     }
 
     async #getBuildingTotlaInfo() {

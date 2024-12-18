@@ -3,7 +3,7 @@ import axios from 'axios'
 export default class HemsClient {
     constructor() {
         this.httpClient = axios.create({
-            baseURL: '/',
+            baseURL: '/', // http://localhost:9080
             headers: {
                 Accept: 'application/json', // JSON 요청 명시
                 'Content-Type': 'application/json', // POST/PUT 시 필요
@@ -73,6 +73,14 @@ export default class HemsClient {
             startDate: '2024-11-06',
         }
         return this.httpClient.post('/api/siteStats/getEvConnectionStatsData', tmpParam)
+    }
+
+    /** 
+        PV 현황 APIs 
+    */
+    async prodPower() {
+        // 운영에서만 확인할 수 있는 데이터이므로 json 파일 리턴
+        return axios.get('/data/status/getProdPower.json')
     }
 
     /** 

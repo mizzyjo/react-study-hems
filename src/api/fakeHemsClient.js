@@ -26,6 +26,14 @@ export default class FakeHemsClient {
     }
 
     /** 
+        PV 현황 APIs 
+    */
+    async prodPower() {
+        // 운영에서만 확인할 수 있는 데이터
+        return axios.get('/data/status/getProdPower.json')
+    }
+
+    /** 
         건물 현황 APIs 
     */
     async buildingTotalInfo() {
