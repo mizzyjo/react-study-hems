@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router"
 
 export const LNB = props => (
-    <header>
+    <header style={{width: '300px'}}>
         <ul>
             <li>
                 테스트 페이지
@@ -15,6 +15,14 @@ export const LNB = props => (
                     </li>
                     <li>
                         <Link to="/epricetest">전기 요금 TEST PAGE</Link>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                대시보드
+                <ul>
+                    <li>
+                        <Link to='/dashboard'>대시보드</Link>
                     </li>
                 </ul>
             </li>
