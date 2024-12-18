@@ -4,6 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import { HemsApiProvider } from './context/HemsApiContext'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import styles from './App.module.css'
 
 const queryClient = new QueryClient()
 
@@ -21,8 +22,12 @@ function App() {
         <>
         <QueryClientProvider client={queryClient}>
             <HemsApiProvider>
-                <LNB />
-                <Outlet />
+                <container className={styles.container}>
+                    <LNB />
+                    <content className={styles.content}>
+                        <Outlet />
+                    </content>
+                </container>
             </HemsApiProvider>
         </QueryClientProvider>
         </>
