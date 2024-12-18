@@ -14,6 +14,7 @@ import BuildingStatus from './pages/status/BuildingStatus'
 import SiteStatusTestPage from './pages/test/SiteStatusTestPage'
 import Eprice from './pages/eprice/Eprice'
 import EpriceTestPage from './pages/test/EpriceTestPage'
+import PvStatus from './pages/status/PvStatus'
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: '/sitestatus',
                 element: <SiteStatus />,
+            },
+            {
+                path: '/pvstatus',
+                element: <PvStatus />
             },
             {
                 path: '/buildingstatus',
@@ -63,9 +68,9 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <RouterProvider router={router} />
-    </React.StrictMode>,
+    // </React.StrictMode>,
 )
 
 // If you want to start measuring performance in your app, pass a function

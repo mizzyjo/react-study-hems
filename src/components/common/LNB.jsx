@@ -33,6 +33,9 @@ export const LNB = props => (
                         <Link to="/sitestatus">사이트 현황</Link>
                     </li>
                     <li>
+                        <Link to="/pvstatus">PV 현황</Link>
+                    </li>
+                    <li>
                         <Link to="/buildingstatus">건물 현황</Link>
                     </li>
                 </ul>
