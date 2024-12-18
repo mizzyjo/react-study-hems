@@ -3,7 +3,7 @@ import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
 import { CustomChart } from '../../components/common/CustomChart'
-import { FaBeer } from "react-icons/fa"
+import { IoHome } from "react-icons/io5"
 import PowerCard from '../../components/common/PowerCard'
 import { BoxplotChart } from '../../components/common/BoxplotChart'
 import { Loading } from '../../components/common/Loading'
@@ -66,6 +66,9 @@ export default function SiteStatus() {
         }
     })
 
+    const buildingEnergy = buildResultData?.resultData.energy || ''
+
+
     /**
      * 시간대별 EV 충전기 연결 현황 차트 (Boxplot Chart)
      */
@@ -109,7 +112,7 @@ export default function SiteStatus() {
     return (
         <div>
             <h1>사이트 현황</h1>
-            <PowerCard title={'건물 전력량'} kwValue={'123kwh'} description={'detail'} img={FaBeer}/>
+            <PowerCard title={'건물 전력량'} kwValue={`${buildingEnergy} kWh`} description={'EHP 전력량 1,500 kWh'} img={IoHome}/>
             {integratedChartConfig?.data?.datasets?.length > 0 && (
                 <CustomChart
                     chartTitle={'사이트 현황 - 통합'}
