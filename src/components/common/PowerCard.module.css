@@ -1,0 +1,27 @@
+.card {
+    border: 1px solid;
+    width: 250px;
+    margin-bottom: 2px;
+    position: relative;
+}
+
+.title {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.kwValue {
+    font-size: 1rem;
+    color: #333;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.imgWrapper {
+    position: absolute;
+    top: 45px;
+    right: 35px;
+}
