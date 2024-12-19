@@ -7,6 +7,9 @@ export const QUERY_KEYS = {
     buildData: 'buildData',
     evConnectionStatus: 'evConnectionStatus',
 
+    // PV 현황
+    prodPower: 'prodPower',
+
     // 빌딩 현황
     buildingTotalInfo: 'buildingTotalInfo',
     buildingStats: 'buildingStats',
