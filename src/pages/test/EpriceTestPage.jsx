@@ -74,6 +74,7 @@ export default function EpriceTestPage() {
     return (
         <div>
             <h1>전기 요금제 관리</h1>
+            <CustomChart data={testChart.data} options={testChart.options} />
             <select name="epChart" id="epChart" onChange={handleSelectedChart}>
                 <option value="day">일</option>
                 <option value="year">년</option>
@@ -158,4 +159,24 @@ const initialChartConfigByDay = {
             },
         },
     },
+}
+
+const testChart = {
+    type: 'line',
+    data: {
+        labels: ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [0, 0, 10, 20, null, 30, 28, 27, 26, 25, 0],
+            borderColor: 'red',
+            borderWidth: 1,
+            spanGaps: false, // 데이터가 null일 경우 끊어짐
+        }]
+    },
+    options: {
+        scales: {
+            x: { title: { display: true, text: '시간' } },
+            y: { title: { display: true, text: '값' } }
+        }
+    }
 }
