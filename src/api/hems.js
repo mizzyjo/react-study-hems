@@ -59,7 +59,7 @@ export default class Hems {
         return this.apiClient
             .essData()
             .then(res => {
-                console.log('res.data essData', res.data)
+                console.log('[hems] essData', res.data)
                 return res.data
             })
     }
@@ -68,7 +68,7 @@ export default class Hems {
         return this.apiClient
             .evData()
             .then(res => {
-                console.log('res.data evData', res.data)
+                console.log('[hems] evData', res.data)
                 return res.data
             })
     }
@@ -77,7 +77,7 @@ export default class Hems {
         return this.apiClient
             .pvData()
             .then(res => {
-                console.log('res.data pvData', res.data)
+                console.log('[hems] pvData', res.data)
                 return res.data
             })
     }
@@ -86,7 +86,7 @@ export default class Hems {
         return this.apiClient
             .buildData()
             .then(res => {
-                console.log('res.data buildData', res.data)
+                console.log('[hems] buildData', res.data)
                 return res.data
             })
     }
@@ -95,7 +95,7 @@ export default class Hems {
         return this.apiClient
         .evConnectionStatsData()
         .then(res => {
-            console.log('res.data evConnectionStatsData', res.data)
+            console.log('[hems] evConnectionStatsData', res.data)
             return res.data
         })
     }
@@ -104,7 +104,7 @@ export default class Hems {
         return this.apiClient
             .prodPower()
             .then(res => {
-                console.log('res.data prodPower', res.data)
+                console.log('[hems] prodPower', res.data)
                 return res.data
             })
     }
@@ -113,7 +113,7 @@ export default class Hems {
         return this.apiClient
             .buildingTotalInfo()
             .then(res => {
-                console.log('res.data0', res.data)
+                console.log('[hems] buildingTotlaInfo', res.data)
                 return res.data
             })
     }
@@ -122,7 +122,7 @@ export default class Hems {
         return this.apiClient
             .buildingStats()
             .then(res => {
-                console.log('res.data', res.data)
+                console.log('[hems] buildingStats', res.data)
                 return res.data
             })
     }
@@ -131,7 +131,7 @@ export default class Hems {
         return this.apiClient
             .consumeRecvPower()
             .then(res => {
-                console.log('res.data2', res.data)
+                console.log('[hems] consumeRecvPower', res.data)
                 return res.data
             })
     }
@@ -140,7 +140,7 @@ export default class Hems {
         return this.apiClient
             .buildingStatusList()
             .then(res => {
-                console.log('res.data3', res.data)
+                console.log('[hems] buildingStatusList', res.data)
                 return res.data
             })
     }
@@ -149,7 +149,7 @@ export default class Hems {
         return this.apiClient
             .siteList()
             .then(res => {
-                console.log('res.data siteList', res.data)
+                console.log('[hems] siteList', res.data)
                 return res.data
             })
     }
@@ -158,7 +158,7 @@ export default class Hems {
         return this.apiClient
             .epChartDataByDay()
             .then(res => {
-                console.log('res.data epChartData(D)', res.data)
+                console.log('[hems] epChartData(D)', res.data)
                 return res.data
             })
     }
@@ -167,7 +167,7 @@ export default class Hems {
         return this.apiClient
             .epChartDataByYear()
             .then(res => {
-                console.log('res.data epChartData(Y)', res.data)
+                console.log('[hems] epChartData(Y)', res.data)
                 return res.data
             })
     }
