@@ -24,9 +24,9 @@ function App() {
             <HemsApiProvider>
                 <div className={styles.container}>
                     <LNB />
-                    <div className={styles.content}>
+                    <main className={styles.content}>
                         <Outlet />
-                    </div>
+                    </main>
                 </div>
             </HemsApiProvider>
         </QueryClientProvider>
