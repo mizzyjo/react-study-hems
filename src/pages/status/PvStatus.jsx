@@ -3,7 +3,7 @@ import { useHemsApi } from '../../context/HemsApiContext'
 import { useQuery } from '@tanstack/react-query'
 import { QUERY_KEYS, STALE_TIME } from '../../config/queryConfig'
 import { CustomChart } from '../../components/common/CustomChart'
-import { initialChartConfig } from '../../config/pvStatusChart'
+import { initialChartConfig, chartTimeLabels } from '../../config/pvStatusChart'
 import { produce } from 'immer'
 import { Loading } from '../../components/common/Loading'
 import { Error } from '../../components/common/Error'
@@ -27,6 +27,13 @@ export default function PvStatus() {
             draft.data.datasets[0].data = prodPower
         }
     })
+
+    if (prodPowerResultData) {
+        const time = prodPowerResultData.resultData.pvList.map(item => item.time) || []
+        time.forEach((value, index) => {
+            chartTimeLabels[index] = value
+        })
+    }
 
     if (isProdPowerDataLoading) {
         return <Loading />

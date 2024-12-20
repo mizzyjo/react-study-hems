@@ -19,7 +19,11 @@ export const initialChartConfig = {
                 callbacks: {
                     label: context => {
                         const data = context.raw
-                        return `발전 출력(kWh): ${data} kW`
+                        return [
+                            `발전 출력(kWh): ${data} kW`,
+                            `${chartTimeLabels[context.dataIndex]}`
+                        ] // 배열로 넣으면 툴팁 메시지 개행
+                        return `발전 출력(kWh): ${data} kW / ${chartTimeLabels[context.dataIndex]}` // 개행 x
                     },
                 },
             },
@@ -69,3 +73,5 @@ export const initialChartConfig = {
         },
     },
 }
+
+export const chartTimeLabels = Array(1440).fill('')
