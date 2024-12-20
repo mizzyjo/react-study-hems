@@ -45,6 +45,7 @@ export default function PvStatus() {
 
     return (
         <div>
+            <h1>PV 현황</h1>
             <CustomChart chartTitle={'발전 출력 그래프 (kW)'} data={chartConfig.data} options={chartConfig.options}/>
         </div>
     )
