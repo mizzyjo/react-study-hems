@@ -94,8 +94,13 @@ export const initialEvConnectionChartConfig = {
                 callbacks: {
                     label: function (context) {
                         const data = context.raw
-                        if ( context.dataset.label === '시간') {
-                            return ` 최소: ${data.min}분 / 평균: ${data.median}분 / 최대: ${data.max}분`
+                        if (context.dataset.label === '시간') {
+                            return [
+                                `최소: ${data.min}분`,
+                                `평균: ${data.median}분`,
+                                `최대: ${data.max}분`,
+                            ]// 툴팁 라벨 개행 적용
+                            // return ` 최소: ${data.min}분 / 평균: ${data.median}분 / 최대: ${data.max}분` // 툴팁 라벨 개행 미적용
                         } else {
                             return ` EV 차량: ${data}`
                         }
